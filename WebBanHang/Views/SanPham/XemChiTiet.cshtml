@@ -1,0 +1,80 @@
+﻿
+@model  WebBanHang.Models.SanPham
+
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Layout/_ProductLayout.cshtml";
+}
+
+<div class="col-md-9 product-price1">
+        <div class="col-md-5 single-top">
+            <div class="flexslider">
+
+              
+                    <ul class="slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-912px, 0px, 0px);">
+                        <li data-thumb="@Url.Content("~/Content/AnhSanPham/"+Model.HinhAnh)" class="clone" aria-hidden="true" style="width: 304px; float: left; display: block;">
+                            <img src="@Url.Content("~/Content/AnhSanPham/"+Model.HinhAnh)" draggable="false">
+                        </li>
+                        <li data-thumb="@Url.Content("~/Content/AnhSanPham/"+Model.HinhAnh1)" style="width: 304px; float: left; display: block;" class="">
+                            <img src="@Url.Content("~/Content/AnhSanPham/"+Model.HinhAnh1)" draggable="false">
+                        </li>
+                        <li data-thumb="@Url.Content("~/Content/AnhSanPham/"+Model.HinhAnh2)" style="width: 304px; float: left; display: block;" class="">
+                            <img src="@Url.Content("~/Content/AnhSanPham/"+Model.HinhAnh2)" draggable="false">
+                        </li>
+                        <li data-thumb="@Url.Content("~/Content/AnhSanPham/"+Model.HinhAnh3)" style="width: 304px; float: left; display: block;" class="">
+                            <img src="@Url.Content("~/Content/AnhSanPham/"+Model.HinhAnh3)" draggable="false">
+                        </li>
+
+                    </ul>
+               
+            </div>
+            <!-- FlexSlider -->
+            <script defer="" src="~/Content/js/jquery.flexslider.js"></script>
+            <link rel="stylesheet" href="~/Content/css/flexslider.css" type="text/css" media="screen">
+
+            <script>
+                // Can also be used with $(document).ready()
+                $(window).load(function () {
+                    $('.flexslider').flexslider({
+                        animation: "slide",
+                        controlNav: "thumbnails"
+                    });
+                });
+            </script>
+        </div>
+        <div class="col-md-7 single-top-in simpleCart_shelfItem">
+            <div class="single-para ">
+                <h4>@Model.TenSP</h4>
+                <div class="star-on">
+                    <ul class="star-footer">
+                        <li><a href="#"><i> </i></a></li>
+                        <li><a href="#"><i> </i></a></li>
+                        <li><a href="#"><i> </i></a></li>
+                        <li><a href="#"><i> </i></a></li>
+                        <li><a href="#"><i> </i></a></li>
+                    </ul>
+                    <div class="review">
+                        <a href="#"> Lượt xem : @Model.LuotXem </a>
+
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+
+                <h5 class="item_price">@Model.DonGia.Value.ToString("#,##") VNĐ</h5>
+                <p>
+                    @Html.Raw(Model.CauHinh)
+                </p>
+
+
+                <a href="@Url.Action("ThemGioHang","GioHang",new {MaSP=Model.MaSP,strURL=Request.Url.ToString()})" class="add-cart item_add">Thêm Vào Giỏ Hàng</a>
+
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+        <!---->
+        <h3>Thông Tin Sản Phẩm </h3>
+        <hr />
+         @Html.Raw(Model.MoTa)
+    
+    </div>
+

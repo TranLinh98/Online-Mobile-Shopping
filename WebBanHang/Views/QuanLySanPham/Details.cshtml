@@ -1,0 +1,170 @@
+﻿@model WebBanHang.Models.SanPham
+
+@{
+    ViewBag.Title = "Xem chi tiết";
+    Layout = "~/Views/Layout/_AdminLayout.cshtml";
+}
+
+<h2>Xem chi tiết</h2>
+
+<div>
+    <h4>Sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaSP)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiSanPham.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiSanPham.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaCungCap.TenNCC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaCungCap.TenNCC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhaSanXuat.TenNSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhaSanXuat.TenNSX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayCapNhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayCapNhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CauHinh)
+        </dt>
+
+        <dd>
+            <textarea name="CauHinh">@Model.CauHinh</textarea>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            <textarea name="MoTa">@Model.MoTa</textarea>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </dt>
+
+        <dd>
+            <img src="~/Content/AnhSanPham/@Html.DisplayFor(model => model.HinhAnh)" style="height:150px;width:150px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LuotXem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LuotXem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LuotBinhChon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LuotBinhChon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLanMua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLanMua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Moi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Moi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DaXoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaXoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh1)
+        </dt>
+
+        <dd>
+            <img src="~/Content/AnhSanPham/@Html.DisplayFor(model => model.HinhAnh1)" style="height:100px;width:100px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh2)
+        </dt>
+
+        <dd>
+            <img src="~/Content/AnhSanPham/@Html.DisplayFor(model => model.HinhAnh2)" style="height:100px;width:100px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh3)
+        </dt>
+
+        <dd>
+            <img src="~/Content/AnhSanPham/@Html.DisplayFor(model => model.HinhAnh3)" style="height:100px;width:100px;" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaSP }) |
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</p>

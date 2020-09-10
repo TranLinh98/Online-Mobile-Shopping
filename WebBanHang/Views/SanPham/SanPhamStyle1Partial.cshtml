@@ -1,0 +1,20 @@
+﻿@using WebBanHang.Models;
+@model IEnumerable<SanPham>
+
+
+        @foreach (var item in Model.Take(6))
+        {
+            <div class="col-md-4 grid-top">
+               @*truyền đường dẫn bằng url thân thiện có tham số id va tensp*@ 
+                <a href="@Url.RouteUrl("XemChiTiet",new { id=item.MaSP,tensp=item.TenSP})" class="b-link-stripe b-animate-go  thickbox">
+                    <img class="img-responsive" src="@Url.Content("~/Content/AnhSanPham/"+item.HinhAnh)" alt="" style="width:350px;height:350px;">
+                    <div class="b-wrapper">
+                        <h3 class="b-animate b-from-left    b-delay03 ">
+                            <span> @item.DonGia.Value.ToString("#,##") VNĐ</span> 
+                        </h3>
+                    </div>
+                </a>
+                <p><a href="@Url.Action("XemChiTiet","SanPham",new { id=item.MaSP})">@item.TenSP</a></p>
+            </div>
+        }
+        <div class="clearfix"> </div>

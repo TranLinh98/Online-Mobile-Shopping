@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebBanHang.Models.DonDatHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KhachHang.TenKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgatDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DaThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DaHuy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UuDai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachHang.TenKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgatDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinhTrang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGiao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaThanhToan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaHuy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UuDai)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaDDH }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaDDH }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaDDH })
+        </td>
+    </tr>
+}
+
+</table>

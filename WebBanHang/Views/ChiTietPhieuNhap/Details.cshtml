@@ -1,0 +1,51 @@
+﻿@model WebBanHang.Models.ChiTietPhieuNhap
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Layout/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ChiTietPhieuNhap</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PhieuNhap.MaPN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhieuNhap.MaPN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SanPham.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SanPham.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGiaNhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGiaNhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongNhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongNhap)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaChiTietPN }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,143 @@
+﻿@model IEnumerable<WebBanHang.Models.SanPham>
+
+@{
+    ViewBag.Title = "Trang danh sách";
+    Layout = "~/Views/Layout/_AdminLayout.cshtml";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Tạo một sản phẩm mới", "Create")
+</p>
+<br />
+<table class="table" style="color:black;background-color:aquamarine;border:1px solid black;border-collapse:collapse;">
+    <tr style="background-color:black;color:azure">
+        <th>
+            @Html.DisplayNameFor(model => model.MaSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiSanPham.TenLoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhaCungCap.TenNCC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhaSanXuat.TenNSX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayCapNhat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CauHinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuotXem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuotBinhChon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLanMua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Moi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DaXoa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhAnh1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhAnh2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhAnh3)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhaCungCap.TenNCC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhaSanXuat.TenNSX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayCapNhat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauHinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            <img src="~/Content/AnhSanPham/@Html.DisplayFor(modelItem => item.HinhAnh)" style="height:100px;width:100px;" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuongTon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LuotXem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LuotBinhChon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLanMua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Moi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaXoa)
+        </td>
+        <td>
+            <img src="~/Content/AnhSanPham/@Html.DisplayFor(modelItem => item.HinhAnh1)" style="height:100px;width:100px;" />
+        </td>
+        <td>
+            <img src="~/Content/AnhSanPham/@Html.DisplayFor(modelItem => item.HinhAnh2)" style="height:100px;width:100px;" />
+        </td>
+        <td>
+            <img src="~/Content/AnhSanPham/@Html.DisplayFor(modelItem => item.HinhAnh3)" style="height:100px;width:100px;" />
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id = item.MaSP }) |
+            @Html.ActionLink("Xem", "Details", new { id = item.MaSP }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.MaSP })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,138 @@
+﻿@using WebBanHang.Models
+@model DonDatHang
+@{
+    ViewBag.Title = "DuyetDonHang";
+    Layout = "~/Views/Layout/_AdminLayout.cshtml";
+}
+
+<h2>Duyệt Đơn Hàng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @{ IEnumerable<ChiTietDonDatHang> listChiTietDH = (IEnumerable<ChiTietDonDatHang>)ViewBag.listChiTietDH; }
+        <table class="table" id="table">
+            <tr>
+                <td colspan="4">
+                    <table class="table">
+                        @Html.HiddenFor(model => model.MaDDH)
+                        <tr>
+                            <th>
+                                Mã đơn hàng
+                            </th>
+                            <th>
+                                Mã Khách Hàng
+                            </th>
+                            <th>
+                                Tên Khách Hàng
+                            </th>
+                            <th>
+                                Ngày đặt
+                            </th>
+                            <th>
+                                Tình trạng Giao Hàng
+                            </th>
+                            <th>
+                                Tình trạng thanh toán
+                            </th>
+
+
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Model.MaDDH
+                            </td>
+                            <td>
+                                @Model.MaKH
+                            </td>
+                            <td>
+                                @if (Model.MaKH != null)
+                                {
+                                    @Model.KhachHang.TenKH
+                                }
+                            </td>
+                            <td>
+                                @Model.NgatDat
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.TinhTrang)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.DaThanhToan)
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Sản phẩm
+                </td>
+                <td>
+                    Hình ảnh
+                </td>
+                <td>
+                    Số lượng
+                </td>
+                <td>
+                    Dơn giá
+                </td>
+            </tr>
+            @foreach (var item in listChiTietDH)
+            {
+                <tr>
+                    <td>
+                        @item.SanPham.TenSP
+                    </td>
+
+                    <td>
+                        <img src="~/Content/AnhSanPham/@item.SanPham.HinhAnh" style="height:50px;width:50px;" />
+                    </td>
+
+                    <td>
+                        @item.SoLuong
+                    </td>
+                    <td>
+                        @item.Gia
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td align="right" colspan="4">
+                    Tổng số lượng :@Model.ChiTietDonDatHangs.Sum(n => n.SoLuong) sản phẩm
+                </td>
+            </tr>
+            <tr>
+                <td align="right" colspan="4">
+                    Tổng tiền :@Model.ChiTietDonDatHangs.Sum(n => n.Gia).Value.ToString("#,##") VNĐ
+                </td>
+            </tr>
+
+        </table>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="In đơn hàng" class="btn btn-default" id="btnIn" />
+                <input type="submit" style="background-color:forestgreen;" value="Duyệt đơn hàng" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $("#btnIn").click(function () {
+        var content = "<table>"+ $("#table").html()+"</table>";
+        indonhang(content);
+    });
+    function indonhang(content) {
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>DIV Contents</title>');
+        printWindow.document.write('</head><body>');
+        printWindow.document.write(content);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+</script>

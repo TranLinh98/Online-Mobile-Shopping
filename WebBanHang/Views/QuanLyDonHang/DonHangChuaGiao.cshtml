@@ -1,0 +1,87 @@
+﻿@model IEnumerable<WebBanHang.Models.DonDatHang>
+@{
+    ViewBag.Title = "DonHangChuaGiao";
+    Layout = "~/Views/Layout/_AdminLayout.cshtml";
+}
+
+<h1> Quản lý đơn hàng</h1>
+<ul class="nav nav-tabs">
+    <li role="presentation">
+        <a class="active" href="@Url.Action("DonHangChuaGiao","QuanLyDonHang")">Đơn hàng chưa giao</a>
+    </li>
+    <li role="presentation">
+        <a href="@Url.Action("DonHangChuaThanhToan","QuanLyDonHang")">Đơn hàng chưa thanh toán</a>
+    </li>
+    <li role="presentation">
+        <a href="@Url.Action("DonHangHoanThanh","QuanLyDonHang")">Đơn Hàng  hoàn thành </a>
+    </li>
+</ul>
+<table class="table">
+    <tr>
+        <th>
+            Mã đơn hàng
+        </th>
+        <th>
+            Tên Khách hàng
+        </th>
+        <th>
+            Ngày Đặt
+        </th>
+        <th>
+            Ngày giao
+        </th>
+        <th>
+            Tình Trạng Giao Hàng
+        </th>
+        <th>
+            Tình trạng thanh toán
+        </th>
+        <th>
+            Ưu đãi
+        </th>
+        <th>
+            Đã Hủy
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaDDH)
+            </td>
+            <td>
+                @if (item.MaKH != null)
+                {
+                    @Html.DisplayFor(modelItem => item.KhachHang.TenKH)
+                }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgatDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayGiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhTrang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaThanhToan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaHuy)
+            </td>
+
+            <td>
+                @Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = item.MaDDH }) |
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+

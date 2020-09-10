@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebBanHang.Models.ChiTietPhieuNhap>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PhieuNhap.MaPN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SanPham.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGiaNhap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuongNhap)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhieuNhap.MaPN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SanPham.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGiaNhap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuongNhap)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaChiTietPN }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaChiTietPN }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaChiTietPN })
+        </td>
+    </tr>
+}
+
+</table>

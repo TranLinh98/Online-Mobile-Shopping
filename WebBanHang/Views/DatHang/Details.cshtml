@@ -1,0 +1,75 @@
+﻿@model WebBanHang.Models.DonDatHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Layout/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DonDatHang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KhachHang.TenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhachHang.TenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgatDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgatDat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayGiao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayGiao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DaThanhToan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaThanhToan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DaHuy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaHuy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UuDai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UuDai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDDH }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

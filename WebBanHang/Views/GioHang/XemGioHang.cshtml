@@ -1,0 +1,117 @@
+﻿@using WebBanHang.Models;
+@model List<ItemCart>
+@{
+    /**/
+
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Layout/_CartLayout.cshtml";
+}
+
+@if (Model == null || Model.Count == 0)
+{
+    <h1 style="color:red">Giỏ Hàng rỗng</h1>
+}
+else
+{
+    <div class="container">
+        <div class="check">
+            <h1>Giỏ hàng của bạn </h1>
+            <div class="col-md-9 cart-items">
+
+
+                <div class="cart-header">
+
+                    <div class="cart-sec simpleCart_shelfItem">
+                        @foreach (var item in Model)
+                        {
+                            <div class="cart-item cyc">
+                                <img src=" @Url.Content("~/Content/AnhSanPham/" + item.HinhAnh)" width="100" height="100" ; />
+                            </div>
+                            <div class="cart-item-info">
+                                <h3> @item.TenSP<span>Mã Sản Phẩm:  @item.MaSP</span></h3>
+                                <ul class="qty">
+                                    <li><p> Số lượng: @item.SoLuong</p></li>
+                                    <li><p>Đơn giá: @item.DonGia.ToString("#,##") VNĐ</p></li>
+                                    <li><p>Thành tiền: @item.ThanhTien.ToString("#,##") VNĐ</p></li>
+                                </ul>
+
+                                <div class="total-item">
+                                    <hr />
+                                    <a class="cpns" href="@Url.Action( "SuaGioHang","GioHang" ,new { @MaSP = item.MaSP })">Sửa</a>
+                                    <a class="cpns" style="background:red" href="@Url.Action( "XoaGioHang","GioHang" ,new { @MaSP = item.MaSP })">Xóa</a>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        }
+
+
+                    </div>
+                </div>
+
+
+            </div>
+            @using (Html.BeginForm("DatHang", "GioHang"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-md-3 cart-total">
+                    <a class="continue" href="@Url.Action( "Index","Home")">Tiếp tục mua hàng</a>
+                    <div class="price-details">
+                        <h3>Thông tin đặt hàng </h3>
+                        <hr />
+                        @if (Session["TaiKhoan"] == null)
+                        {
+                            <h3>Điền Thông tin đặt hàng </h3>
+                        
+                            <div>
+                                <span>Họ Tên</span>
+                                @Html.TextBox("TenKH")
+
+                            </div>
+                            <div>
+                                <span>Địa chỉ</span>
+                                @Html.TextArea("DiaChi")
+
+                            </div>
+                            <div class="form-group">
+                                <span>Email</span>
+                                @Html.TextBox("Email")
+                            </div>
+                            <div>
+                                <span>Số điện thoại</span>
+                                @Html.TextBox("SDT")
+                            </div>
+                            <div>
+                                <span> @Html.Hidden("MaThanhVien")</span>
+                            </div>
+
+                        }
+
+
+                        @*<h3>Chi tiết hóa đơn</h3>
+        <span>Tổng tiền</span>
+        <span class="total1"> @ViewBag.TongTien VNĐ</span>
+        <span>Giảm giá</span>
+        <span class="total1">---</span>
+        <span>Phí vận chuyển</span>
+        <span class="total1">0 VNĐ</span>*@
+                        <div class="clearfix"></div>
+                    </div>
+                    <ul class="total_price">
+                        <li class="last_price"> <h4>Tổng tiền</h4></li>
+                        <li class="last_price"><span>  @ViewBag.TongTien VNĐ</span></li>
+                        <div class="clearfix"> </div>
+                    </ul>
+
+
+                    <div class="clearfix"></div>
+                    <hr />
+                    <input type="submit" value="Đặt Hàng" class="btn btn-default" style="background:green ;color:white" />
+                </div>
+            }
+
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+}
